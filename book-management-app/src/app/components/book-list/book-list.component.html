@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>📚 Book Management System</h1>
+    
+    <button class="btn-add" (click)="openAddForm()">+ Add New Book</button>
+
+    <div class="book-grid">
+        <div class="book-card" *ngFor="let book of books">
+            <h3>{{ book.title }}</h3>
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+            <p><strong>Published:</strong> {{ book.publicationDate | date:'mediumDate' }}</p>
+            <div class="actions">
+                <button class="btn-edit" (click)="openEditForm(book)">✏️ Edit</button>
+                <button class="btn-delete" (click)="deleteBook(book.id)">🗑️ Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" *ngIf="showForm" (click)="cancelForm()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <app-book-form 
+                [book]="selectedBook" 
+                [isEditing]="isEditing"
+                (save)="saveBook($event)"
+                (cancel)="cancelForm()">
+            </app-book-form>
+        </div>
+    </div>
+
+    <div *ngIf="books.length === 0" class="no-books">
+        No books found. Click "Add New Book" to create one.
+    </div>
+</div>
