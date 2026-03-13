@@ -1,0 +1,17 @@
+# Backend - ignore bin and obj folders
+BookManagementAPI/bin/
+BookManagementAPI/obj/
+
+# Frontend - ignore node_modules and build files
+book-management-app/node_modules/
+book-management-app/dist/
+book-management-app/.angular/
+
+# IDE files
+.vscode/
+*.user
+*.suo
+
+# OS files
+.DS_Store
+Thumbs.db
